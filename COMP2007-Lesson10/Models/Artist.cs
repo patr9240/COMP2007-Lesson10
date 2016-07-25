@@ -8,7 +8,7 @@ namespace COMP2007_Lesson10.Models
 {
         public class Artist
         {
-            public int ArtistID { get; set; }
-            public string Name { get; set; }
+            public virtual int ArtistID { get; set; }
+            public virtual string Name { get; set; }
         }
 }
