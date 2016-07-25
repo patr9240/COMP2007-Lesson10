@@ -20,16 +20,17 @@ namespace COMP2007_Lesson10.Controllers
         }
 
         // GET: /Store/Browse?genre=Disco
-        public ActionResult Browse(string genre)
+        public ActionResult Browse(string genre = "Rock")
         {
-            Genre genreModel = new Genre(genre);
+            // Retrieve Genre and its Associated Albums from database
+            Genre genreModel = storeDB.Genres.Include("Albums").Single(g => g.Name == genre);
 
             return View(genreModel);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int id = 1)
         {
-            Album album = new Album("Album " + id);
+            Album album = storeDB.Albums.Find(id);
 
             return View(album);
         }
